@@ -1,21 +1,15 @@
-from flask import Flask, request
+from flask import Flask
+
+from blog.user.views import user
+from blog.article.views import article
 
 
-app = Flask(__name__)
+def create_app() -> Flask:
+    app = Flask(__name__)
+    register_blueprints(app)
+    return app
 
 
-@app.route('/', methods=['GET'])
-def index():
-    return 'Hello web!', 200
-
-
-@app.errorhandler(404)
-def error_404(error):
-    return 'Страничка не найдена :('
-
-
-# @app.route('/user/')
-# def read_user():
-#     name = request.args.get('name')
-#     surname = request.args.get('surname')
-#     return f"User {name or '[no name]'} {surname or '[no surname]'}"
+def register_blueprints(app: Flask):
+    app.register_blueprint(user)
+    app.register_blueprint(article)
