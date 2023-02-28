@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Users detail
+    User #{{ user.id }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ user_name }}</h1>
+    <h1>{{ user.username }}</h1>
+    {% if user.is_staff %}
+        <span class='badge bg-secondary'>staff</span>
+    {% endif %}
 {% endblock %}
