@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="{{ url_for('index.get_index')}}">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,12 +13,16 @@
           <a class="nav-link" href="{{ url_for('article.article_list') }}">Articles</a>
         </li>
         <li class="nav-item">
-          {% if current_user.is_authenticated %}
+            {% if current_user.is_authenticated %}
               <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
-          {% else %}
+            {% else %}
               <a href="{{ url_for('auth.login') }}"
-              class="nav-link {% if request == 'auth.login' -%}active{% endif %}">Login</a>
-          {% endif %}
+              class="nav-link {% if request == 'auth.login' %}active{% endif %}">Login</a>
+              <li class="nav-item">
+                <a href="{{ url_for('auth.register') }}"
+                class="nav-link {% if request == 'auth.register' %}active{% endif %}">Register</a>
+              </li>
+            {% endif %}
         </li>
       </ul>
     </div>

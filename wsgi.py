@@ -1,3 +1,5 @@
+import os
+
 from blog.app import create_app
 
 from blog.models.database import db
@@ -13,28 +15,29 @@ if __name__ == '__main__':
     )
     
 
-@app.cli.command('init-db')
-def init_db():
-    db.create_all()
-    print('done!')
+# @app.cli.command('init-db')
+# def init_db():
+#     db.create_all()
+#     print('done!')
 
 
-@app.cli.command('create-users')
-def create_users():
+@app.cli.command('create-admin')
+def create_admin():
     from blog.models import User
+
     admin = User(username='admin', is_staff=True)
-    alex = User(username='Alex')
+    admin.password = os.environ.get('ADMIN_PASSWORD') or 'adminpass'
 
     db.session.add(admin)
-    db.session.add(alex)
     db.session.commit()
 
-    print('users created!')
+    print('admin created!')
 
 
 @app.cli.command('create-articles')
 def create_articles():
     from blog.models import Article
+    
     sometitle = Article(title='Sometitle', text='sometext')
     test = Article(title='test', text='text')
 
