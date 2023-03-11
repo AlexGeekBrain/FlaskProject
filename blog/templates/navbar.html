@@ -10,7 +10,10 @@
           <a class="nav-link" href="{{ url_for('user.user_list') }}">Users</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('article.article_list') }}">Articles</a>
+          <a class="nav-link" href="{{ url_for('articles.article_list') }}">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('authors.authors_list') }}">Authors</a>
         </li>
         <li class="nav-item">
             {% if current_user.is_authenticated %}

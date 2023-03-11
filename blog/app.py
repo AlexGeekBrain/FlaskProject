@@ -4,8 +4,10 @@ from flask_migrate import Migrate
 
 from blog.index.views import index
 from blog.user.views import user
-from blog.article.views import article
+from blog.article.views import articles
+from blog.authors.views import authors
 from blog.auth.views import auth, login_manager
+
 from blog.models.database import db
 from blog.security import flask_bcrypt
 
@@ -34,5 +36,6 @@ def create_app() -> Flask:
 def register_blueprints(app: Flask):
     app.register_blueprint(index)
     app.register_blueprint(user)
-    app.register_blueprint(article)
+    app.register_blueprint(articles)
     app.register_blueprint(auth)
+    app.register_blueprint(authors)
