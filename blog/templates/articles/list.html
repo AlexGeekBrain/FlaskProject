@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Articles list
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <h1>Articles:</h1>
+            <ul>
+                {% for article in articles %}
+                    <li>
+                        <a href={{ url_for('articles.article_details', article_id=article.id) }}>{{ article.title }}</a>
+                            by {{ article.author.user.username }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <hr>
+            <a href="{{ url_for('articles.create_article') }}">Create new</a>
+        </div>
+    </div>
+{% endblock %}
