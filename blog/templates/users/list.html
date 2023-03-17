@@ -10,7 +10,7 @@
             <h1>Users:</h1>
             {% for user in users %}
                 <ul>
-                    <li><a href={{ url_for('user.user_details', pk=user.id) }}>{{ user.username }}</a></li>
+                    <li><a href={{ url_for('users.user_details', pk=user.id) }}>{{ user.username }}</a></li>
                 </ul>
                 {% if user.is_staff %}
                     <span class='badge bg-secondary'>staff</span>

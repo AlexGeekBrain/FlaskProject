@@ -1,6 +1,8 @@
 import os
 
 
+FLASK_ADMIN_SWATCH = 'Cyborg'
+
 class BaseConfig(object):
     DEBUG = False
     TESTING = False
